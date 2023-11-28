@@ -28,5 +28,7 @@ def traitement():
         return render_template("login.html")
     '''Peut return sur une nouvelle page html potentiellement'''
 
+'''Test de push dans le main'''
+
 if __name__ == '__main__':
     app.run(debug=True)
