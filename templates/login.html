@@ -4,15 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="style_login.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_login.css') }}">
 </head>
 <body>
-    <video src="LemonBackground.mp4" autoplay loop muted></video>
-
-
-    <div class="go-back">
-        <a href="accueil.html" class="back-link">&#8592; Retour à l'accueil</a>
-    </div>
+    <video src="{{ url_for('static', filename='LemonBackground.mp4') }}" autoplay loop muted></video>
 
     <div class="login-box">
 
@@ -31,7 +26,7 @@
                 <!-- Boîte de message d'erreur -->
             </div>
             <div class="submit">
-                <input type="submit" value="Soumettre">
+                <input type="submit" value="Connexion">
             </div>
         </form>
 
