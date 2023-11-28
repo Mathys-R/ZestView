@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="style_create_account.css">
+</head>
+<body>
+    <video src="LemonBackground.mp4" autoplay loop muted></video>
+
+    <div class="create-account-box">
+        <form action="{{url_for('create_account')}}" method="post">
+            <div class="user-box">
+                <label for="email">Adresse E-mail :</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="user-box">
+                <label for="password">Mot de Passe :</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div class="user-box">
+                <label for="confirm-password">Confirmer le Mot de Passe :</label>
+                <input type="password" name="confirm-password" id="confirm-password" required>
+            </div>
+            <div class="submit">
+                <input type="submit" value="Créer un Compte">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
