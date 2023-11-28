@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_home.css') }}">
+</head>
+<body>
+    <div class="header">
+        <!-- Logo en haut à droite -->
+        <img src="{{ url_for('static', filename='ZestViewLOGO.png') }}" alt="ZestView Logo" class="logo">
+
+        <!-- Barre de recherche -->
+        <div class="search-bar">
+            <input type="text" placeholder="Rechercher...">
+            <button type="button">Rechercher</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- Contenu de la page -->
+        <h1>Bienvenue sur ZestView</h1>
+    </div>
+</body>
+</html>
