@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liste de Noms</title>
+  </head>
+  <body>
+    <h1>Liste de Noms</h1>
+    </br>
+    <form action="/friends" method="POST">
+        <input type="text" placeholder="Name" name="name">
+        <input type="submit" value="Add Name" class="btn btn-secondary">
+    </form>
+    <br></br>
+    {% for friend in friends %}
+    <h5>
+      {{friend.name}}
+    </h5>
+    {% endfor %}
+  </body>
+</html>
