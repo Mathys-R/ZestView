@@ -17,7 +17,7 @@ class Users(db.Model):
 @app.route("/")
 def bienvenue():
     #A modifier pour push dans le main -> remettre home.html
-    return render_template("adminpanel.html")
+    return render_template("accueil.html")
 
 @app.route("/adminpanel",methods=['POST','GET'])
 
