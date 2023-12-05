@@ -62,5 +62,6 @@ def traitement():
         return render_template("login.html")
     '''Peut return sur une nouvelle page html potentiellement'''
 
+
 if __name__ == '__main__':
     app.run(debug=True)
