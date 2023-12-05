@@ -20,23 +20,22 @@ video {
 }
 
 .go-back {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
 .go-back .back-link {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    display: inline-block;
-    transition: color 0.5s ease;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  transition: color 0.5s ease;
 }
 
 .go-back .back-link:hover {
-    color: lightgray;
+  color: lightgray;
 }
-
 
 .login-box {
   position: absolute;
