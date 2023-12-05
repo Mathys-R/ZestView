@@ -8,7 +8,7 @@
   <body>
     <h1>Liste de Noms</h1>
     </br>
-    <form action="/friends" method="POST">
+    <form action="/adminpanel" method="POST">
         <input type="text" placeholder="Name" name="name">
         <input type="submit" value="Add Name" class="btn btn-secondary">
     </form>
@@ -16,6 +16,7 @@
     {% for friend in friends %}
     <h5>
       {{friend.name}}
+      {{friend.id}}
     </h5>
     {% endfor %}
   </body>

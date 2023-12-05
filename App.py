@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///friends.db'
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///zestviewdata.db'
 
 db = SQLAlchemy(app)
 
@@ -17,10 +17,10 @@ class Friends(db.Model):
 def bienvenue():
     return render_template("accueil.html")
 
-@app.route("/friends",methods=['POST','GET'])
+@app.route("/adminpanel",methods=['POST','GET'])
 
 
-def friends():
+def adminpanel():
     if request.method =="POST":
         friend_name = request.form['name']
         new_friend = Friends(name=friend_name) # type: ignore
@@ -29,12 +29,12 @@ def friends():
         try:
             db.session.add(new_friend)
             db.session.commit()
-            return redirect('/friends')
+            return redirect('/adminpanel')
         except:
             return "Error"
     else:
-        friends = Friends.query.order_by(Friends.name)
-        return render_template("friends.html",friends=friends)
+        friends = Friends.query.order_by(Friends.id)
+        return render_template("adminpanel.html",friends=friends)
 
 @app.route("/login")
 def login():
