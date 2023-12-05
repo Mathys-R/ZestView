@@ -34,6 +34,7 @@ def adminpanel():
             return redirect('/adminpanel')
         except:
             return "Error"
+
     else:
         userlist = Users.query.order_by(Users.id)
         return render_template("adminpanel.html",userlist=userlist)
@@ -47,6 +48,7 @@ def create_account():
     return render_template("create_account.html")
 
 @app.route("/traitement", methods=["POST"])
+
 def traitement():
     donnees = request.form
     user = donnees['username']
