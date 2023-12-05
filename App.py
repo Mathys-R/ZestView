@@ -6,35 +6,37 @@ app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///zestviewdata.db'
 
 db = SQLAlchemy(app)
 
-class Friends(db.Model):
+class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200),nullable=False)
+    password = db.Column(db.String(200),nullable=False)
 
     def __repr__(self):
         return '<Name %r>' %self.id
 
 @app.route("/")
 def bienvenue():
-    return render_template("accueil.html")
+    #A modifier pour push dans le main -> remettre home.html
+    return render_template("adminpanel.html")
 
 @app.route("/adminpanel",methods=['POST','GET'])
 
 
 def adminpanel():
     if request.method =="POST":
-        friend_name = request.form['name']
-        new_friend = Friends(name=friend_name) # type: ignore
+        #Creating new user from HTML form
+        new_user = Users(name=request.form['username'],password=request.form['password']) # type: ignore
 
-        #push to db
+        #Push to db
         try:
-            db.session.add(new_friend)
+            db.session.add(new_user)
             db.session.commit()
             return redirect('/adminpanel')
         except:
             return "Error"
     else:
-        friends = Friends.query.order_by(Friends.id)
-        return render_template("adminpanel.html",friends=friends)
+        userlist = Users.query.order_by(Users.id)
+        return render_template("adminpanel.html",userlist=userlist)
 
 @app.route("/login")
 def login():

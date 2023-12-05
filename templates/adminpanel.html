@@ -6,17 +6,19 @@
     <title>Liste de Noms</title>
   </head>
   <body>
-    <h1>Liste de Noms</h1>
+    <h1>Liste des Utilisateurs</h1>
     </br>
     <form action="/adminpanel" method="POST">
-        <input type="text" placeholder="Name" name="name">
-        <input type="submit" value="Add Name" class="btn btn-secondary">
+        <input type="text" placeholder="Username" name="username">
+        <input type="text" placeholder="Password" name="password">
+        <input type="submit" value="Add User" class="btn btn-secondary">
     </form>
     <br></br>
-    {% for friend in friends %}
+    {% for user in userlist %}
     <h5>
-      {{friend.name}}
-      {{friend.id}}
+      {{user.id}}
+      {{user.name}}
+      {{user.password}}
     </h5>
     {% endfor %}
   </body>
