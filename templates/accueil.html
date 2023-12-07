@@ -8,12 +8,18 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style_accueil.css') }}"
     />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='ZestViewLOGO.png') }}"
+      type="image/png"
+    />
   </head>
   <body>
     <video
       src="{{ url_for('static', filename='LemonBackground.mp4') }}"
       autoplay
       loop
+      muted
     ></video>
 
     <div class="home-box">

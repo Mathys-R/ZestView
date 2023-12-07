@@ -1,25 +1,76 @@
+<!-- templates/adminpanel.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Liste de Noms</title>
+    <title>Admin Panel</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style_adminpanel.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='ZestViewLOGO.png') }}"
+      type="image/png"
+    />
   </head>
   <body>
-    <h1>Liste des Utilisateurs</h1>
-    </br>
-    <form action="/adminpanel" method="POST">
-        <input type="text" placeholder="Username" name="username">
-        <input type="text" placeholder="Password" name="password">
-        <input type="submit" value="Add User" class="btn btn-secondary">
+    <h1>Admin Panel</h1>
+
+    <!-- User Management Section -->
+    <h2>User Management</h2>
+    <form action="/adminpanel" method="post">
+      <label for="username">Username:</label>
+      <input type="text" name="username" required />
+      <label for="password">Password:</label>
+      <input type="password" name="password" required />
+      <button type="submit" name="action" value="add_user">Add User</button>
     </form>
-    <br></br>
-    {% for user in userlist %}
-    <h5>
-      {{user.id}}
-      {{user.name}}
-      {{user.password}}
-    </h5>
-    {% endfor %}
+
+    <h3>User List:</h3>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>cat1</th>
+        <th>cat2</th>
+        <th>cat3</th>
+        <th>Privilege</th>
+      </tr>
+      {% for user in userlist %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.password }}</td>
+        <td>{{ user.cat1 }}</td>
+        <td>{{ user.cat2 }}</td>
+        <td>{{ user.cat3 }}</td>
+        <td>{{ user.privilege }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <!-- SQL Query Section -->
+    <h2>Execute SQL Query</h2>
+    <form action="/adminpanel" method="post">
+      <label for="sql_query">SQL Query:</label>
+      <textarea name="sql_query" rows="5" cols="50" required></textarea>
+      <br />
+      <button type="submit" name="action" value="execute_query">
+        Execute Query
+      </button>
+    </form>
+
+    <!-- Display Query Result -->
+    {% if result %}
+    <h3>Query Result:</h3>
+    <ul>
+      {% for row in result %}
+      <li>{{ row }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
   </body>
 </html>
