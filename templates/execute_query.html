@@ -1,0 +1,18 @@
+<!-- templates/execute_query.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL Query Form</title>
+  </head>
+  <body>
+    <h1>Enter SQL Query</h1>
+    <form action="/execute_query" method="post">
+      <label for="sql_query">SQL Query:</label>
+      <textarea name="sql_query" rows="5" cols="50" required></textarea>
+      <br />
+      <button type="submit">Execute Query</button>
+    </form>
+  </body>
+</html>

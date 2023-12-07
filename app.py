@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import text
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///zestviewdata.db'
@@ -14,7 +15,14 @@ class Users(db.Model):
     def __repr__(self):
         return '<Name %r>' %self.id
 
-@app.route("/")
+class Categories(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    category = db.Column(db.String(25),nullable=False)
+    link = db.Column(db.String(50),nullable=False)
+    title = db.Column(db.String(255),nullable=False)
+    rating = db.Column(db.Integer)
+
+"""@app.route("/")
 def bienvenue():
     #A modifier pour push dans le main -> remettre home.html
     return render_template("accueil.html")
@@ -61,7 +69,27 @@ def traitement():
         '''return "Une erreur est survenue"'''
         return render_template("login.html")
     '''Peut return sur une nouvelle page html potentiellement'''
+"""
+@app.route('/')
+def index():
+    return render_template('execute_query.html')  # Render the execute_query form
 
+@app.route('/execute_query', methods=['POST'])
+def execute_query():
+    user_input = request.form.get('sql_query')
+    
+    # Use SQLAlchemy ORM to perform safe database operations
+    result = db.session.execute(text(user_input)) #type:ignore
+
+    names = [row[0] for row in result]
+
+    print("Data in 'names' :",names)
+
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return jsonify(names)
+    
+    # Process the result or send it to the template
+    return render_template('result.html', result=names)
 
 if __name__ == '__main__':
     app.run(debug=True)

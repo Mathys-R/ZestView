@@ -1,0 +1,19 @@
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Query Result</title>
+  </head>
+  <body>
+    <h1>Query Result</h1>
+    <p>The result of the query is:</p>
+    <ul>
+      {% for row in result %}
+      <br />{{ row }}</br>
+      {% endfor %}
+    </ul>
+    <p><a href="/">Back to Query Form</a></p>
+  </body>
+</html>
