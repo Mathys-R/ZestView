@@ -1,4 +1,5 @@
 # Bash script useful to update database tables when you modify their structure
+# ./refreshDB.sh to run | Must have be executable, otherwise -> chmod 744 refreshDB.sh
 
 #Define the name of your Database file
 dbName="zestviewdata.db"
