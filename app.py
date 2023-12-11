@@ -11,10 +11,10 @@ class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(200),nullable=False)
     password = db.Column(db.String(200),nullable=False)
-    cat1 = db.Column(db.String(20))
-    cat2 = db.Column(db.String(20))
-    cat3 = db.Column(db.String(20))
-    privilege = db.Column(db.String(10),nullable=False)
+    cat1 = db.Column(db.String(20),default='None')
+    cat2 = db.Column(db.String(20),default='None')
+    cat3 = db.Column(db.String(20),default='None')
+    privilege = db.Column(db.String(10),nullable=False,default='User')
 
     def __repr__(self):
         return '<Name %r>' %self.id
@@ -24,7 +24,7 @@ class Video(db.Model):
     category = db.Column(db.String(25),nullable=False)
     link = db.Column(db.String(50),nullable=False)
     title = db.Column(db.String(255),nullable=False)
-    rating = db.Column(db.Integer)
+    rating = db.Column(db.Integer,default=0)
 
 @app.route("/")
 def bienvenue():
