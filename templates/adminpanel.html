@@ -25,16 +25,38 @@
     <form action="/adminpanel" method="post">
       <label for="username">Username:</label>
       <input type="text" name="username" required />
+
       <label for="password">Password:</label>
       <input type="password" name="password" required />
+
       <label for="cat1">Category 1:</label>
-      <input type="text" name="cat1" />
+      <input
+        type="text"
+        name="cat1"
+        value="{{ request.form.get('cat1', 'None') }}"
+      />
+
       <label for="cat2">Category 2:</label>
-      <input type="text" name="cat2" />
+      <input
+        type="text"
+        name="cat2"
+        value="{{ request.form.get('cat2', 'None') }}"
+      />
+
       <label for="cat3">Category 3:</label>
-      <input type="text" name="cat3" />
+      <input
+        type="text"
+        name="cat3"
+        value="{{ request.form.get('cat3', 'None') }}"
+      />
+
       <label for="privilege">Privilege:</label>
-      <input type="text" name="privilege" />
+      <input
+        type="text"
+        name="privilege"
+        value="{{ request.form.get('privilege','User') }}"
+      />
+
       <button type="submit" name="action" value="add_user">Add User</button>
     </form>
 
