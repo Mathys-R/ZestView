@@ -9,7 +9,7 @@ db = SQLAlchemy(app)
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(200),nullable=False)
+    username = db.Column(db.String(200),nullable=False)
     password = db.Column(db.String(200),nullable=False)
     cat1 = db.Column(db.String(20))
     cat2 = db.Column(db.String(20))
@@ -28,7 +28,6 @@ class Video(db.Model):
 
 @app.route("/")
 def bienvenue():
-    #A modifier pour push dans le main -> remettre home.html
     return render_template("accueil.html")
 
 @app.route("/adminpanel",methods=['POST','GET'])
@@ -38,7 +37,7 @@ def adminpanel():
     if request.method == 'POST' and request.form['action'] == 'add_user':
         # Creating new user from HTML form
         new_user = Users(
-            name=request.form['username'],
+            username=request.form['username'],
             password=request.form['password'],
             cat1=request.form['cat1'],
             cat2=request.form['cat2'],
@@ -52,6 +51,18 @@ def adminpanel():
             return redirect('/adminpanel')
         except:
             return "Error Adding User to DB"
+        
+    #Update User Data
+    elif request.method == 'POST' and request.form['action'] == 'update_user_data':
+        try:
+            record = Users.query.get(request.form['userid'])
+            record.username = request.form['username']#type: ignore
+            record.password=request.form['password']#type: ignore
+            record.privilege=request.form['privilege']#type: ignore
+            db.session.commit()
+            return redirect('/adminpanel')
+        except:
+            return "Error updating Data"
         
     #Delete User
     elif request.method == 'POST' and request.form['action'] =='delete_user':
@@ -79,6 +90,18 @@ def adminpanel():
         except:
             return "Error Adding Video to DB"
         
+    #Update Video Data
+    elif request.method == 'POST' and request.form['action'] == 'update_video_data':
+        try:
+            record = Video.query.get(request.form['videoid'])
+            record.category=request.form['category'] #type:ignore
+            record.link=request.form['link'] #type:ignore
+            record.title=request.form['title'] #type:ignore
+            db.session.commit()
+            return redirect ('/adminpanel')
+        except:
+            return "Error updating Video Data"
+
     #Delete Video
     elif request.method == 'POST' and request.form['action'] =='delete_video':
         try:
