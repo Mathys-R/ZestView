@@ -18,6 +18,8 @@
   <body>
     <h1>Admin Panel</h1>
 
+    <br />
+
     <!-- User Management Section -->
     <h2>User Management</h2>
     <form action="/adminpanel" method="post">
@@ -44,6 +46,8 @@
       </button>
     </form>
 
+    <br />
+
     <h3>User List:</h3>
     <table>
       <tr>
@@ -68,6 +72,8 @@
       {% endfor %}
     </table>
 
+    <br />
+
     <!-- Video Management Section -->
     <h2>Video Management</h2>
     <form action="/adminpanel" method="post">
@@ -89,6 +95,8 @@
       </button>
     </form>
 
+    <br />
+
     <h3>Video List:</h3>
     <table>
       <tr>
@@ -109,6 +117,8 @@
       {% endfor %}
     </table>
 
+    <br />
+
     <!-- SQL Query Section -->
     <h2>Execute SQL Query</h2>
     <form action="/adminpanel" method="post">
@@ -119,6 +129,8 @@
         Execute Query
       </button>
     </form>
+
+    <br />
 
     <!-- Display Query Result -->
     {% if result %}
