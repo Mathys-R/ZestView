@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, jsonify, redirect
+from flask import Flask, render_template, request, jsonify, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
 
 app = Flask(__name__)
+app.secret_key = 'Mr1Tp2Gm3'  # Clé de signature des sessions en FLASK (sécurité)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///zestviewdata.db'
 
 db = SQLAlchemy(app)
@@ -185,12 +186,32 @@ def login():
         user_exists = Users.query.filter_by(username=username, password=password).first()
 
         if user_exists:
-            return render_template("home.html", name_user=username)
+            # Stocke les informations de l'utilisateur dans sa session
+            session['user_id'] = user_exists.id 
+            session['username'] = username
+            session['cat1'] = user_exists.cat1
+            session['cat2'] = user_exists.cat2
+            session['cat3'] = user_exists.cat3
+            session['privilege'] = user_exists.privilege
+            return redirect('/home')
         else:
             result = "Identifiants incorrects. Veuillez réessayer."
             return render_template("login.html",result=result)
     else:
-        return render_template('login.html')
+        return render_template("login.html")
+    
+
+@app.route("/home", methods=['GET','POST'])
+def home():
+    # Récupère les informations de l'utilisateur depuis la session
+    username = session.get('username')
+    cat1 = session.get('cat1')
+    cat2 = session.get('cat2')
+    cat3 = session.get('cat3')
+    priv = session.get('privilege')
+
+    return render_template("home.html", name_user=username)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
