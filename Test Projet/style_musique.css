@@ -1,0 +1,63 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #28a745; /* Couleur de la bande verte */
+  padding: 15px;
+  text-align: left;
+}
+
+.logo {
+  width: 100px; /* Ajustez la taille selon vos besoins */
+}
+
+.category-name {
+  background-color: #ffcc00; /* Couleur de fond jaune */
+  color: #000; /* Couleur du texte noir */
+  text-align: center;
+  padding: 15px;
+}
+
+.category-name h2 {
+  margin: 0;
+}
+
+.video-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.video-item {
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  flex: 1 1 calc(25% - 20px); /* Pour afficher 4 vidéos côte à côte avec 20px de marge entre elles */
+  margin-bottom: 20px; /* Espace entre les rangées de vidéos */
+}
+
+@media (max-width: 768px) {
+  .video-item {
+    flex: 1 1 calc(50% - 20px); /* Pour afficher 2 vidéos par rangée sur des écrans plus petits */
+  }
+}
+
+.video-item:hover {
+  transform: scale(1.05);
+}
+
+.video-item img {
+  width: 100%;
+  height: auto;
+}
+
+.video-item h3 {
+  margin: 10px;
+}
