@@ -132,22 +132,48 @@ def login():
 
 @app.route("/create_account")
 def create_account():
+    if request.method == "POST":
+        username = request.form['username']
+        password = request.form['password']
+        
+        # Vérification si le nom d'utilisateur existe déjà dans la base de données
+        existing_user = Users.query.filter_by(name=username).first()
+
+        if existing_user:
+            error_message = "Ce nom d'utilisateur existe déjà. Veuillez en choisir un autre."
+            return render_template("create_account.html", error_message=error_message)
+        else:
+            # Créer un nouvel utilisateur s'il n'existe pas déjà dans la base de données
+            new_user = Users(
+                name=username,
+                password=password,
+                # voir pour ajouter les autres attributs comme dans le admin panel.
+            )
+
+            try:
+                db.session.add(new_user)
+                db.session.commit()
+                return redirect('/login')  # Redirection vers la page de login après que le compte est crée.
+            except:
+                error_message = "Une erreur est survenue lors de la création du compte."
+                return render_template("create_account.html", error_message=error_message)
+
     return render_template("create_account.html")
 
 @app.route("/traitement", methods=["POST"])
-
 def traitement():
     donnees = request.form
     user = donnees['username']
     pw = donnees['password']
-    print(user,pw)
-    if user == "gwen" and pw == "1234":
-        '''return f"Bienvenue {user}, vous êtes connecté."'''
+    
+    # Vérification : si l'utilisateur et le mot de passe existent dans la base de données
+    user_exists = Users.query.filter_by(name=user, password=pw).first()
+
+    if user_exists:
         return render_template("home.html", name_user=user)
     else:
-        '''return "Une erreur est survenue"'''
-        return render_template("login.html")
-    '''Peut return sur une nouvelle page html potentiellement'''
+        error_message = "identifiants incorrectes. Veuillez réessayer. "
+        return render_template("login.html",error_message=error_message)
 
 
 if __name__ == '__main__':
