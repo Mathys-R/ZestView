@@ -41,14 +41,16 @@
           <label for="pw">Mot de Passe :</label>
           <input type="password" name="password" id="password" required />
         </div>
+        <div class="error-message" id="error-message">
+          {% if result %}
+          <br />
+          <p>{{ result }}</p>
+          {% endif %}
+        </div>
         <div class="submit">
           <input type="submit" value="Connexion" name="action" />
         </div>
       </form>
-      {% if result %}
-      <br />
-      <p>{{ result }}</p>
-      {% endif %}
     </div>
   </body>
 </html>
