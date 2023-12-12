@@ -30,24 +30,33 @@ def bienvenue():
 @app.route("/adminpanel",methods=['POST','GET'])
 def adminpanel():
 
+    error_message = ""
     #Add User
     if request.method == 'POST' and request.form['action'] == 'add_user':
-        # Creating new user from HTML form
-        new_user = Users(
-            username=request.form['username'],
-            password=request.form['password'],
-            cat1=request.form['cat1'],
-            cat2=request.form['cat2'],
-            cat3=request.form['cat3'],
-            privilege=request.form['privilege']) #type:ignore
 
-        # Push to db
-        try:
-            db.session.add(new_user)
-            db.session.commit()
-            return redirect('/adminpanel')
-        except:
-            return "Error Adding User to DB"
+        username_exists = Users.query.filter_by(username=request.form['username']).first()
+        if username_exists:
+            error_message = "Ce nom d'utilisateur existe déjà."
+            userlist = Users.query.order_by(Users.id)
+            vidlist = Video.query.order_by(Video.id)
+            return render_template('adminpanel.html',error_add_user=error_message,userlist=userlist,vidlist=vidlist)
+        else:
+            # Creating new user from HTML form
+            new_user = Users(
+                username=request.form['username'],
+                password=request.form['password'],
+                cat1=request.form['cat1'],
+                cat2=request.form['cat2'],
+                cat3=request.form['cat3'],
+                privilege=request.form['privilege']) #type:ignore
+            
+            # Push to db
+            try:
+                db.session.add(new_user)
+                db.session.commit()
+                return redirect('/adminpanel')
+            except:
+                return "Error Adding User to DB"
         
     #Update User Data
     elif request.method == 'POST' and request.form['action'] == 'update_user_data':
@@ -72,20 +81,28 @@ def adminpanel():
         
     #Add Video
     elif request.method == 'POST' and request.form['action'] == 'add_video':
-        # Creating new video from HTML form
-        """ MODIFIER POUR INITIALISER LA VALEUR DU RATING A 0 """
-        new_video = Video(
-            category=request.form['category'],
-            link=request.form['link'],
-            title=request.form['title']) #type:ignore
 
-        # Push to db
-        try:
-            db.session.add(new_video)
-            db.session.commit()
-            return redirect('/adminpanel')
-        except:
-            return "Error Adding Video to DB"
+        title_exists = Video.query.filter_by(title=request.form['title']).first()
+        if title_exists:
+            error_message = "Ce titre de vidéo existe déjà."
+            userlist = Users.query.order_by(Users.id)
+            vidlist = Video.query.order_by(Video.id)
+            return render_template('adminpanel.html',error_add_video=error_message,userlist=userlist,vidlist=vidlist)
+        else :  
+            # Creating new video from HTML form
+            """ MODIFIER POUR INITIALISER LA VALEUR DU RATING A 0 """
+            new_video = Video(
+                category=request.form['category'],
+                link=request.form['link'],
+                title=request.form['title']) #type:ignore
+
+            # Push to db
+            try:
+                db.session.add(new_video)
+                db.session.commit()
+                return redirect('/adminpanel')
+            except:
+                return "Error Adding Video to DB"
         
     #Update Video Data
     elif request.method == 'POST' and request.form['action'] == 'update_video_data':
@@ -130,7 +147,7 @@ def create_account():
     if request.method == "POST":
         username = request.form['username']
         password = request.form['password']
-        privilege='User'
+        privilege='User' # Privilège par défaut
         
         # Vérification si le nom d'utilisateur existe déjà 
         existing_user = Users.query.filter_by(username=username).first()
@@ -174,9 +191,6 @@ def login():
             return render_template("login.html",result=result)
     else:
         return render_template('login.html')
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)

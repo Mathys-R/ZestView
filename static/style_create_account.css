@@ -103,6 +103,11 @@ video {
   border: 2px solid white;
 }
 
+.create-account-box .error-message {
+  color: red;
+  margin-top: 10px;
+}
+
 .create-account-box form .submit input:hover {
   background-color: transparent;
   color: white;
