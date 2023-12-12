@@ -125,11 +125,6 @@ def adminpanel():
     vidlist = Video.query.order_by(Video.id)
     return render_template("adminpanel.html", userlist=userlist,vidlist=vidlist)
 
-        
-@app.route("/login",methods=['POST','GET'])
-def login():
-    return render_template("login.html")
-
 @app.route("/create_account", methods=["GET", "POST"])
 def create_account():
     if request.method == "POST":
@@ -161,28 +156,25 @@ def create_account():
 
     return render_template("create_account.html")
 
-@app.route("/traitement", methods=['POST','GET'])
-def traitement():
-    if request.method == "POST":
-        username = request.form['username']
-        password = request.form['password']
+@app.route("/login",methods=['GET','POST'])
+def login():
+    if request.method == 'POST' and request.form['action'] == 'Connexion':
+        donnees = request.form
+        username = donnees['username']
+        password = donnees['password']
+        result=""
         
-        user = Users.query.filter_by(username=username).first()
+        # Vérification : si l'utilisateur et le mot de passe existent dans la base de données
+        user_exists = Users.query.filter_by(username=username, password=password).first()
 
-        if user:
-            # Si l'utilisateur existe, vérifiez le mot de passe
-            if user.password == password:
-                return redirect('/home')
-            else:
-                error_message = "Mot de passe incorrect."
-                return render_template("login.html", error=error_message)
+        if user_exists:
+            return render_template("home.html", name_user=username)
         else:
-            # Si l'utilisateur n'existe pas
-            error_message = "Nom d'utilisateur ou mot de passe incorrect."
-            return render_template("login.html", error=error_message)
+            result = "Identifiants incorrects. Veuillez réessayer."
+            return render_template("login.html",result=result)
+    else:
+        return render_template('login.html')
 
-    # Si la méthode n'est pas POST, rediriger vers la page de login
-    return redirect('/login')
 
 
 
