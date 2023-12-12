@@ -1,4 +1,3 @@
-from crypt import methods
 from flask import Flask, render_template, request, jsonify, redirect
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
