@@ -11,13 +11,10 @@ class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(200),nullable=False)
     password = db.Column(db.String(200),nullable=False)
-    cat1 = db.Column(db.String(20),default='None')
-    cat2 = db.Column(db.String(20),default='None')
-    cat3 = db.Column(db.String(20),default='None')
-    privilege = db.Column(db.String(10),nullable=False,default='User')
-
-    def __repr__(self):
-        return '<Name %r>' %self.id
+    cat1 = db.Column(db.String(20))
+    cat2 = db.Column(db.String(20))
+    cat3 = db.Column(db.String(20))
+    privilege = db.Column(db.String(10),nullable=False)
 
 class Video(db.Model):
     id = db.Column(db.Integer, primary_key=True)
