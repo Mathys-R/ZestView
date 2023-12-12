@@ -1,35 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style_login.css') }}">
-</head>
-<body>
-    <video src="{{ url_for('static', filename='LemonBackground.mp4') }}" autoplay loop muted></video>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style_login.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='ZestViewLOGO.png') }}"
+      type="image/png"
+    />
+  </head>
+  <body>
+    <video
+      src="{{ url_for('static', filename='LemonBackground.mp4') }}"
+      autoplay
+      loop
+      muted
+    ></video>
+
+    <div class="go-back">
+      <a href="{{url_for('bienvenue')}}" class="back-link"
+        >&#8592; Retour à l'accueil</a
+      >
+    </div>
 
     <div class="login-box">
-
-        <form action="{{url_for('traitement')}}" method="post">
-            <!--action : definie la route de l'URL sur laquel les données du formulaire vont être transmis
+      <form action="{{url_for('traitement')}}" method="post">
+        <!--action : definie la route de l'URL sur laquel les données du formulaire vont être transmis
             methode : méthode d'envoie des données au serv (GET, POST)-->
-            <div class="user-box">
-                <label for="user">Nom d'utilisateur :</label>
-                <input type="text" name="username" id="user" required>
-            </div>
-            <div class="user-box">
-                <label for="pw">Mot de Passe :</label> 
-                <input type="password" name="password" id="pw" required>
-            </div>
-            <div class="error-message" id="error-message">
-                <!-- Boîte de message d'erreur -->
-            </div>
-            <div class="submit">
-                <input type="submit" value="Connexion">
-            </div>
-        </form>
 
+        <div class="user-box">
+          <label for="user">Nom d'utilisateur :</label>
+          <input type="text" name="username" id="username" required />
+        </div>
+        <div class="user-box">
+          <label for="pw">Mot de Passe :</label>
+          <input type="password" name="password" id="password" required />
+        </div>
+        <div class="error-message" id="error-message">
+          <!-- Boîte de message d'erreur -->
+          {% if error_message %}
+          <div class="error-message">{{ error_message }}</div>
+          {% endif %}
+        </div>
+        <div class="submit">
+          <input type="submit" value="Connexion" />
+        </div>
+      </form>
     </div>
-</body>
+
+
+  </body>
 </html>
