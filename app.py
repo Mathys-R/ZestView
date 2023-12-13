@@ -212,6 +212,18 @@ def home():
 
     return render_template("home.html", name_user=username)
 
+@app.route("/home/musique")
+def musique():
+    videos = Video.query.filter_by(category='Musique').all()
+    return render_template("categorie_musique.html", videos=videos)
+
+@app.route("/home/jeux_videos")
+def jv():
+    return render_template("categorie_jv.html")
+
+@app.route("/home/sport")
+def sport():
+    return render_template("categorie_sport.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
