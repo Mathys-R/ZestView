@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecteur</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_lecteur.css') }}"/>
+  </head>
+  <body>
+    <div class="header">
+      <link
+      rel="icon"
+      href="{{ url_for('static', filename='ZestViewLOGO.png') }}"
+      type="image/png"
+      />
+    </div>
+
+    <div class="video-player-container">
+      <iframe
+        src="https://www.youtube.com/embed/Oc-s4gH3cEc"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </body>
+</html>
