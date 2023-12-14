@@ -5,38 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lecteur</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style_lecteur.css') }}" />
-    
-    <div class="video-player">
-      <!-- La balise iframe pour afficher la vidéo -->
-      <iframe src="" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <script>
-    // Récupère les paramètres de l'URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const videoLink = urlParams.get('videoLink');
-
-    // Récupère l'élément iframe
-    const iframe = document.querySelector('.video-player iframe');
-
-    // Vérifie si videoLink n'est pas null ou vide, puis met à jour la source de l'iframe
-    if (videoLink) {
-      iframe.src = "https://www.youtube.com/embed/" + videoLink;
-    } else {
-      // Si videoLink est vide ou null, affiche un message d'erreur ou une action par défaut
-      console.error('Lien de vidéo manquant.');
-      // Tu peux aussi rediriger l'utilisateur ou afficher un message à l'écran
-    }
-  </script>
   </head>
+
   <body>
-    <div class="header">
-      <link rel="icon" href="{{ url_for('static', filename='ZestViewLOGO.png') }}" type="image/png" />
+    <div class="main">
+      <!-- Utilisez une div avec un ID spécifique pour incorporer le lecteur YouTube -->
+      <div id="youtube-player"></div>
     </div>
 
-    <div class="video-player-container">
-      <iframe src="" frameborder="0" allowfullscreen></iframe>
+    <div class="main">
+        <!-- Utilise une div avec un ID spécifique pour incorporer le lecteur YouTube -->
+        <div id="youtube-player"></div>
     </div>
+
+    <script>
+      // Fonction pour récupérer les paramètres d'URL
+      function getParameterByName(name, url) {
+          if (!url) url = window.location.href;
+          name = name.replace(/[[]]/g, '\$&');
+          var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+              results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      }
+
+      // Récupère le videoId de l'URL
+      var videoId = getParameterByName('videoId');
+
+      // Utilise le videoId pour incorporer le lecteur YouTube
+      var playerDiv = document.getElementById('youtube-player');
+      if (videoId) {
+          // Remplace l'iframe pour utiliser la version embarquée de la vidéo
+          playerDiv.innerHTML = '<iframe width="560" height="560" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      } else {
+          playerDiv.innerHTML = '<p>Aucune vidéo spécifiée</p>';
+      }
+  </script>
   </body>
 </html>

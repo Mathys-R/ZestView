@@ -35,6 +35,8 @@ def adminpanel():
         if 'privilege' not in session or session['privilege'] != 'Admin':
             # Si la session n'existe pas ou si le privilège n'est pas 'Admin', renvoie un message d'erreur
             return "Accès refusé : privilèges insuffisants."
+        
+        #Si la session existe et que le privilège est 'Admin', on laisse libre accès au panel.
         #Add User
         if request.method == 'POST' and request.form['action'] == 'add_user':
 
@@ -230,6 +232,12 @@ def jv():
 @app.route("/home/sport")
 def sport():
     return render_template("categorie_sport.html")
+
+@app.route("/home/lecteur.html")
+def lecteur():
+    # Récupère le paramètre 'videoLink' de l'URL
+    video_link = request.args.get('videoLink')
+    return render_template("lecteur.html", video_link=video_link)
 
 if __name__ == '__main__':
     app.run(debug=True)
