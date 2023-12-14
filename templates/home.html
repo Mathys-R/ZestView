@@ -32,7 +32,13 @@
 
     <div class="content">
       <!-- Contenu de la page -->
-      <h1>Bienvenue sur ZestView</h1>
+      <h1>Bonjour {{ name_user }}. Bienvenue sur ZestView</h1>
+    </div>
+    <!-- Boutons redirigeant vers des templates spécifiques -->
+    <div class="buttons">
+      <a href="{{url_for('musique')}}"><button type="button">Musique</button></a>
+      <a href="{{url_for('jv')}}"><button type="button">Jeux vidéos</button></a>
+      <a href="{{url_for('sport')}}"><button type="button">Sport</button></a>
     </div>
   </body>
 </html>

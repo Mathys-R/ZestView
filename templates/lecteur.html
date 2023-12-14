@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lecteur</title>
-    <link rel="stylesheet" href="style_lecteur.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_lecteur.css') }}"/>
   </head>
   <body>
     <div class="header">
-      <img src="zestview-logo.png" alt="ZestView Logo" class="logo" />
+      <link
+      rel="icon"
+      href="{{ url_for('static', filename='ZestViewLOGO.png') }}"
+      type="image/png"
+      />
     </div>
 
     <div class="video-player-container">

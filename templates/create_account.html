@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -46,6 +46,12 @@
             id="confirm-password"
             required
           />
+        </div>
+        <div class="error-message" id="error-message">
+          <!-- Boîte de message d'erreur -->
+          {% if error_message %}
+          <div class="error-message">{{ error_message }}</div>
+          {% endif %}
         </div>
         <div class="submit">
           <input type="submit" value="Créer un compte" />

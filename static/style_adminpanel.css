@@ -99,3 +99,10 @@ h3 + table,
 h2 + table {
   margin: 0 auto;
 }
+
+div {
+  color: red;
+  text-align: center;
+  margin: 0 auto; 
+  max-width: 600px; 
+}
