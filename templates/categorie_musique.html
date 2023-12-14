@@ -34,11 +34,11 @@
     <div class="main">
       <div class="video-list">
         <div class="video-item" onclick="openVideo('{{ videos[0].link }}')">
-          <img src="{{ url_for('static', filename='thumbnail.jpg') }}" alt="{{ videos[0].title }}" />
+          <img src="https://img.youtube.com/vi/{{ videos[0].link }}/0.jpg" alt="{{ videos[0].title }}" />
           <h3>{{ videos[0].title }}</h3>
         </div>
         <div class="video-item" onclick="openVideo('{{ videos[1].link }}')">
-          <img src="{{ url_for('static', filename='thumbnail.jpg') }}" alt="{{ videos[1].title }} " />
+          <img src="https://img.youtube.com/vi/{{ videos[1].link }}/0.jpg" alt="{{ videos[1].title }}" />
           <h3>{{ videos[1].title }}</h3>
         </div>
         <!-- A compléter --> 
@@ -70,9 +70,9 @@
     </div>
 
     <script>
-      function openVideo(videoLink) {
-        // Ouvre la vidéo dans un nouvel onglet
-        window.open("https://www.youtube.com/embed/" + videoLink, "_blank");
+      function openVideo(videoId) {
+          // Redirige vers la page de lecteur avec l'ID de la vidéo sélectionnée
+          window.location.href = "/home/lecteur.html?videoId=" + videoId;
       }
     </script>
   </body>
