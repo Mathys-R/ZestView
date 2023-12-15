@@ -14,19 +14,28 @@
     </div>
 
     <div class="main">
-        <!-- Utilise une div avec un ID spécifique pour incorporer le lecteur YouTube -->
-        <div id="youtube-player"></div>
+      <!-- Utilise une div avec un ID spécifique pour incorporer le lecteur YouTube -->
+      <div id="youtube-player"></div>
+      <br />
+      <div class="back-button">
+        <a href="javascript:history.back()">Retour</a>
+      </div>
     </div>
 
     <script>
       // Fonction pour récupérer les paramètres d'URL
       function getParameterByName(name, url) {
+          // Si aucune url est transmise, on prend celle de la fenêtre.
           if (!url) url = window.location.href;
+          // permet de retire les '[' et ']' du nom s'il en a.
           name = name.replace(/[[]]/g, '\$&');
+          // Permet de récupére le paramètre name en recherchant les caractères spécifiques.
           var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            //On retire l'URL pour ne garder que la partie souhaité de l'URL complète.
               results = regex.exec(url);
           if (!results) return null;
           if (!results[2]) return '';
+          // renvoie la paramètre récupéré de l'URL décodée et nettoyer de '+'
           return decodeURIComponent(results[2].replace(/\+/g, ' '));
       }
 

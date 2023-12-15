@@ -3,19 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Catégorie Jeux-vidéos</title>
+    <title>Catégorie Cuisine</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='style_jv.css') }}"
+      href="{{ url_for('static', filename='style_cuisine.css') }}"
     />
   </head>
   <body>
     <div class="header">
       <!-- Logo en haut à gauche -->
       <link
-      rel="icon"
-      href="{{ url_for('static', filename='ZestViewLOGO.png') }}"
-      type="image/png"
+        rel="icon"
+        href="{{ url_for('static', filename='ZestViewLOGO.png') }}"
+        type="image/png"
       />
     </div>
 
@@ -36,7 +36,7 @@
 
     <div class="category-name">
       <!-- Nom de la catégorie -->
-      <h2>Jeux-vidéos</h2>
+      <h2>Cuisine</h2>
     </div>
 
     <div class="main">
@@ -78,8 +78,8 @@
 
     <script>
       function openVideo(videoId) {
-        // Ouvre la vidéo dans un nouvel onglet
-        window.open("https://www.youtube.com/embed/" + videoId, "_blank");
+        // Redirige vers la page de lecteur avec l'ID de la vidéo sélectionnée
+        window.location.href = "/home/lecteur.html?videoId=" + videoId;
       }
     </script>
   </body>

@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.secret_key = 'Mr1Tp2Gm3'  # Clé de signature des sessions en FLASK (sécurité)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///zestviewdata.db'
 
-db = SQLAlchemy(app)
+db = SQLAlchemy(app) #test
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -218,7 +218,7 @@ def home():
     cat3 = session.get('cat3')
     priv = session.get('privilege')
 
-    return render_template("home.html", name_user=username)
+    return render_template("home.html", name_user=username, pref1=cat1, pref2=cat2, pref3=cat3, right=priv)
 
 @app.route("/home/musique")
 def musique():
@@ -227,11 +227,28 @@ def musique():
 
 @app.route("/home/jeux_videos")
 def jv():
-    return render_template("categorie_jv.html")
+    videos = Video.query.filter_by(category='Jeux vidéos').all()
+    return render_template("categorie_jv.html", videos=videos)
 
 @app.route("/home/sport")
 def sport():
-    return render_template("categorie_sport.html")
+    videos = Video.query.filter_by(category='Sport').all()
+    return render_template("categorie_sport.html", videos=videos)
+
+@app.route("/home/cuisine")
+def cuisine():
+    videos = Video.query.filter_by(category='Cuisine').all()
+    return render_template("categorie_cuisine.html", videos=videos)
+
+@app.route("/home/documentaire")
+def documentaire():
+    videos = Video.query.filter_by(category='Documentaire').all()
+    return render_template("categorie_documentaire.html", videos=videos)
+
+@app.route("/home/automobile")
+def automobile():
+    videos = Video.query.filter_by(category='Automobile').all()
+    return render_template("categorie_automobile.html", videos=videos)
 
 @app.route("/home/lecteur.html")
 def lecteur():
