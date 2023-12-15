@@ -170,7 +170,7 @@ def create_account():
                 username=username,
                 password=password,
                 privilege=privilege
-            )
+            )#type:ignore
 
             try:
                 db.session.add(new_user)
