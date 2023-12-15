@@ -218,7 +218,7 @@ def home():
     cat3 = session.get('cat3')
     priv = session.get('privilege')
 
-    return render_template("home.html", name_user=username)
+    return render_template("home.html", name_user=username, pref1=cat1, pref2=cat2, pref3=cat3, right=priv)
 
 @app.route("/home/musique")
 def musique():
