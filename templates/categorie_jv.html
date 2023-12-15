@@ -41,39 +41,37 @@
 
     <div class="main">
       <div class="video-list">
-        <div class="video-item">
-          <a href="lecteur.html?videoId=Oc-s4gH3cEc">
-            <img src="{{ url_for('static', filename='thumbnail1.jpg') }}" alt="Video 1 Thumbnail" />
-            <h3>Titre de la vidéo 1</h3>
-          </a>
+        <div class="video-item" onclick="openVideo('{{ videos[0].link }}')">
+          <img src="https://img.youtube.com/vi/{{ videos[0].link }}/0.jpg" alt="{{ videos[0].title }}" />
+          <h3>{{ videos[0].title }}</h3>
         </div>
-        <div class="video-item" onclick="openVideo('VIDEO_ID_2')">
-          <img src="{{ url_for('static', filename='thumbnail1.jpg') }}" alt="Video 2 Thumbnail" />
-          <h3>Titre de la vidéo 2</h3>
+        <div class="video-item" onclick="openVideo('{{ videos[1].link }}')">
+          <img src="https://img.youtube.com/vi/{{ videos[1].link }}/0.jpg" alt="{{ videos[1].title }}" />
+          <h3>{{ videos[1].title }}</h3>
         </div>
-        <div class="video-item" onclick="openVideo('VIDEO_ID_3')">
-          <img src="{{ url_for('static', filename='thumbnail1.jpg') }}" alt="Video 3 Thumbnail" />
-          <h3>Titre de la vidéo 3</h3>
+        <div class="video-item" onclick="openVideo('{{ videos[2].link }}')">
+          <img src="https://img.youtube.com/vi/{{ videos[2].link }}/0.jpg" alt="{{ videos[2].title }}" />
+          <h3>{{ videos[2].title }}</h3>
         </div>
-        <div class="video-item" onclick="openVideo('VIDEO_ID_4')">
-          <img src="{{ url_for('static', filename='thumbnail1.jpg') }}" alt="Video 4 Thumbnail" />
-          <h3>Titre de la vidéo 4</h3>
+        <div class="video-item" onclick="openVideo('{{ videos[3].link }}')">
+          <img src="https://img.youtube.com/vi/{{ videos[3].link }}/0.jpg" alt="{{ videos[3].title }}" />
+          <h3>{{ videos[3].title }}</h3>
         </div>
-        <div class="video-item" onclick="openVideo('VIDEO_ID_5')">
-          <img src="{{ url_for('static', filename='thumbnail1.jpg') }}" alt="Video 5 Thumbnail" />
-          <h3>Titre de la vidéo 5</h3>
+        <div class="video-item" onclick="openVideo('{{ videos[4].link }}')">
+          <img src="https://img.youtube.com/vi/{{ videos[4].link }}/0.jpg" alt="{{ videos[4].title }}" />
+          <h3>{{ videos[4].title }}</h3>
         </div>
-        <div class="video-item" onclick="openVideo('VIDEO_ID_6')">
-          <img src="{{ url_for('static', filename='thumbnail1.jpg') }}" alt="Video 6 Thumbnail" />
-          <h3>Titre de la vidéo 6</h3>
+        <div class="video-item" onclick="openVideo('{{ videos[5].link }}')">
+          <img src="https://img.youtube.com/vi/{{ videos[5].link }}/0.jpg" alt="{{ videos[5].title }}" />
+          <h3>{{ videos[5].title }}</h3>
         </div>
-        <div class="video-item" onclick="openVideo('VIDEO_ID_7')">
-          <img src="{{ url_for('static', filename='thumbnail1.jpg') }}" alt="Video 7 Thumbnail" />
-          <h3>Titre de la vidéo 7</h3>
+        <div class="video-item" onclick="openVideo('{{ videos[6].link }}')">
+          <img src="https://img.youtube.com/vi/{{ videos[6].link }}/0.jpg" alt="{{ videos[6].title }}" />
+          <h3>{{ videos[6].title }}</h3>
         </div>
-        <div class="video-item" onclick="openVideo('VIDEO_ID_8')">
-          <img src="{{ url_for('static', filename='thumbnail1.jpg') }}" alt="Video 8 Thumbnail" />
-          <h3>Titre de la vidéo 8</h3>
+        <div class="video-item" onclick="openVideo('{{ videos[7].link }}')">
+          <img src="https://img.youtube.com/vi/{{ videos[7].link }}/0.jpg" alt="{{ videos[7].title }}" />
+          <h3>{{ videos[7].title }}</h3>
         </div>
       </div>
     </div>

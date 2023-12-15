@@ -106,3 +106,18 @@ div {
   margin: 0 auto; 
   max-width: 600px; 
 }
+
+.go-back {
+  color: white; /* Assurez-vous que le texte est blanc */
+  position: absolute;
+  top: 20px; /* Ajustez la valeur selon vos besoins pour le positionnement vertical */
+  right: 20px; /* Place le bloc à l'extrême droite */
+}
+
+.go-back .back-link {
+  text-decoration: none;
+  color: white;
+  background-color: #28a745; /* Couleur de fond verte pour le bouton de retour à l'accueil */
+  padding: 10px;
+  border-radius: 5px;
+}

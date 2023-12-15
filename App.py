@@ -227,23 +227,28 @@ def musique():
 
 @app.route("/home/jeux_videos")
 def jv():
-    return render_template("categorie_jv.html")
+    videos = Video.query.filter_by(category='Jeux vidéos').all()
+    return render_template("categorie_jv.html", videos=videos)
 
 @app.route("/home/sport")
 def sport():
-    return render_template("categorie_sport.html")
+    videos = Video.query.filter_by(category='Sport').all()
+    return render_template("categorie_sport.html", videos=videos)
 
 @app.route("/home/cuisine")
 def cuisine():
-    return render_template("categorie_cuisine.html")
+    videos = Video.query.filter_by(category='Cuisine').all()
+    return render_template("categorie_cuisine.html", videos=videos)
 
 @app.route("/home/documentaire")
 def documentaire():
-    return render_template("categorie_documentaire.html")
+    videos = Video.query.filter_by(category='Documentaire').all()
+    return render_template("categorie_documentaire.html", videos=videos)
 
 @app.route("/home/automobile")
 def automobile():
-    return render_template("categorie_automobile.html")
+    videos = Video.query.filter_by(category='Automobile').all()
+    return render_template("categorie_automobile.html", videos=videos)
 
 @app.route("/home/lecteur.html")
 def lecteur():
