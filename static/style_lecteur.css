@@ -23,6 +23,6 @@ body {
 }
 
 iframe {
-  width: 70%; /* Ajustez la largeur du lecteur selon vos besoins */
-  height: 100%;
+  width: 100%; /* Ajustez la largeur du lecteur selon vos besoins */
+  aspect-ratio: 1; /* Carré, maintient les dimensions égales */
 }
