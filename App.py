@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.secret_key = 'Mr1Tp2Gm3'  # Clé de signature des sessions en FLASK (sécurité)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///zestviewdata.db'
 
-db = SQLAlchemy(app)
+db = SQLAlchemy(app) #test
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
