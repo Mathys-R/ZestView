@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Catégorie Musique</title>
+    <title>Catégorie Automobile</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='style_musique.css') }}"
+      href="{{ url_for('static', filename='style_automobile.css') }}"
     />
   </head>
   <body>
@@ -36,24 +36,24 @@
 
     <div class="category-name">
       <!-- Nom de la catégorie -->
-      <h2>Musique</h2>
+      <h2>Automobile</h2>
     </div>
 
     <div class="main">
       <div class="video-list">
-        <div class="video-item" onclick="openVideo('{{ videos[0].link }}')">
+        <div class="video-item" onclick="openVideo('')">
           <img
-            src="https://img.youtube.com/vi/{{ videos[0].link }}/0.jpg"
-            alt="{{ videos[0].title }}"
+            src="{{ url_for('static', filename='thumbnail1.jpg') }}"
+            alt="Video 1 Thumbnail"
           />
-          <h3>{{ videos[0].title }}</h3>
+          <h3>Titre de la vidéo 1</h3>
         </div>
-        <div class="video-item" onclick="openVideo('{{ videos[1].link }}')">
+        <div class="video-item" onclick="openVideo('')">
           <img
-            src="https://img.youtube.com/vi/{{ videos[1].link }}/0.jpg"
-            alt="{{ videos[1].title }}"
+            src="{{ url_for('static', filename='thumbnail1.jpg') }}"
+            alt="Video 2 Thumbnail"
           />
-          <h3>{{ videos[1].title }}</h3>
+          <h3>Titre de la vidéo 2</h3>
         </div>
         <!-- A compléter -->
         <div class="video-item" onclick="openVideo('VIDEO_ID_3')">
