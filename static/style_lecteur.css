@@ -1,0 +1,47 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #28a745; /* Couleur de la bande verte */
+  padding: 15px;
+  text-align: left;
+}
+
+.logo {
+  width: 100px; /* Ajustez la taille selon vos besoins */
+}
+
+.video-player-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; /* Ajustez la hauteur selon vos besoins */
+  margin-top: 20px; /* Espacement entre la bande verte et le lecteur */
+}
+
+iframe {
+  width: 100%; /* Ajustez la largeur du lecteur selon vos besoins */
+  aspect-ratio: 1; /* Carré, maintient les dimensions égales */
+}
+
+.back-button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-button a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #28a745; /* Couleur verte */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button a:hover {
+  background-color: #218838; /* Couleur verte légèrement plus sombre au survol */
+}

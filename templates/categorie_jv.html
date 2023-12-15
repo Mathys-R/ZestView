@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catégorie Jeux-vidéos</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style_jv.css') }}"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <!-- Logo en haut à gauche -->
+      <link
+        rel="icon"
+        href="{{ url_for('static', filename='ZestViewLOGO.png') }}"
+        type="image/png"
+      />
+    </div>
+
+    <div class="logo-container">
+      <img
+        src="{{ url_for('static', filename='ZestViewLOGO.png') }}"
+        alt="ZestView Logo"
+        class="logo"
+      />
+    </div>
+
+    <!-- Retour à la page précédente -->
+    <div class="go-back">
+      <a href="{{url_for('home')}}" class="back-link"
+        >&#8592; Retour à l'accueil</a
+      >
+    </div>
+
+    <div class="category-name">
+      <!-- Nom de la catégorie -->
+      <h2>Jeux-vidéos</h2>
+    </div>
+
+    <div class="main">
+      <div class="video-list">
+        <div class="video-item">
+          <a href="lecteur.html?videoId=Oc-s4gH3cEc">
+            <img
+              src="{{ url_for('static', filename='thumbnail1.jpg') }}"
+              alt="Video 1 Thumbnail"
+            />
+            <h3>Titre de la vidéo 1</h3>
+          </a>
+        </div>
+        <div class="video-item" onclick="openVideo('')">
+          <img
+            src="{{ url_for('static', filename='thumbnail1.jpg') }}"
+            alt="Video 2 Thumbnail"
+          />
+          <h3>Titre de la vidéo 2</h3>
+        </div>
+        <div class="video-item" onclick="openVideo('VIDEO_ID_3')">
+          <img
+            src="{{ url_for('static', filename='thumbnail1.jpg') }}"
+            alt="Video 3 Thumbnail"
+          />
+          <h3>Titre de la vidéo 3</h3>
+        </div>
+        <div class="video-item" onclick="openVideo('VIDEO_ID_4')">
+          <img
+            src="{{ url_for('static', filename='thumbnail1.jpg') }}"
+            alt="Video 4 Thumbnail"
+          />
+          <h3>Titre de la vidéo 4</h3>
+        </div>
+        <div class="video-item" onclick="openVideo('VIDEO_ID_5')">
+          <img
+            src="{{ url_for('static', filename='thumbnail1.jpg') }}"
+            alt="Video 5 Thumbnail"
+          />
+          <h3>Titre de la vidéo 5</h3>
+        </div>
+        <div class="video-item" onclick="openVideo('VIDEO_ID_6')">
+          <img
+            src="{{ url_for('static', filename='thumbnail1.jpg') }}"
+            alt="Video 6 Thumbnail"
+          />
+          <h3>Titre de la vidéo 6</h3>
+        </div>
+        <div class="video-item" onclick="openVideo('VIDEO_ID_7')">
+          <img
+            src="{{ url_for('static', filename='thumbnail1.jpg') }}"
+            alt="Video 7 Thumbnail"
+          />
+          <h3>Titre de la vidéo 7</h3>
+        </div>
+        <div class="video-item" onclick="openVideo('VIDEO_ID_8')">
+          <img
+            src="{{ url_for('static', filename='thumbnail1.jpg') }}"
+            alt="Video 8 Thumbnail"
+          />
+          <h3>Titre de la vidéo 8</h3>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function openVideo(videoId) {
+        // Ouvre la vidéo dans un nouvel onglet
+        window.open("https://www.youtube.com/embed/" + videoId, "_blank");
+      }
+    </script>
+  </body>
+</html>
