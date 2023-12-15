@@ -25,38 +25,45 @@
 
       {% if right == 'Admin' %}
       <div class="admin-access">
-        <a href="{{ url_for('adminpanel') }}"><button type="button">Accéder au panel administrateur</button></a>
+        <a href="{{ url_for('adminpanel') }}" class="admin-access-button">Accés au panel admin</a>
       </div>
       {% endif %}
+    </div>
+
+    <div class="change-account-box">
+      <a href="{{ url_for('bienvenue') }}" class="change-account-button">Changer de compte</a>
     </div>
 
     <div class="content">
       <!-- Contenu de la page -->
       <h1>Bonjour {{ name_user }}. Bienvenue sur ZestView</h1>
-    </div>
 
-    <!-- Afficage des préférences utilisateurs -->
-    <div class="preferences">
-      <h2>Voici vos préférences :</h2>
-      <div class="preference-box">
-        <h3>Catégorie 1 :</h3>
-        <p>{{ pref1 }}</p>
+      <!-- Message central et boutons des catégories -->
+      <div class="category-section">
+        <h2>Choisissez votre catégorie</h2>
+        <div class="category-buttons">
+          <a href="{{url_for('jv')}}"
+            ><button type="button" class="category-button">
+              Jeux vidéos
+            </button></a
+          >
+          <a href="{{url_for('musique')}}"
+            ><button type="button" class="category-button">Musique</button></a
+          >
+          <a href="{{url_for('sport')}}"
+            ><button type="button" class="category-button">Sport</button></a
+          >
+          <a href="{{url_for('cuisine')}}"
+            ><button type="button" class="category-button">Cuisine</button></a
+          >
+          <a href="{{url_for('documentaire')}}"
+            ><button type="button" class="category-button">Documentaire</button></a
+          >
+          <a href="{{url_for('automobile')}}"
+            ><button type="button" class="category-button">Automobile</button></a
+          >
+        </div>
       </div>
-      <div class="preference-box">
-        <h3>Catégorie 2 :</h3>
-        <p>{{ pref2 }}</p>
-      </div>
-      <div class="preference-box">
-        <h3>Catégorie 3 :</h3>
-        <p>{{ pref3 }}</p>
-      </div>
-    </div>
-
-    <!-- Boutons redirigeant vers des templates spécifiques -->
-    <div class="buttons">
-      <a href="{{url_for('musique')}}"><button type="button">Musique</button></a>
-      <a href="{{url_for('jv')}}"><button type="button">Jeux vidéos</button></a>
-      <a href="{{url_for('sport')}}"><button type="button">Sport</button></a>
     </div>
   </body>
 </html>
