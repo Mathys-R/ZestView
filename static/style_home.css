@@ -22,34 +22,51 @@ body {
   width: 100px;
 }
 
-.search-bar {
-  display: flex;
-  width: 300px;
-}
-
-.search-bar input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.search-bar button {
-  padding: 10px 15px;
-  background-color: #0073e6;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
 .content {
   max-width: 800px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 40px; /* Ajustez la valeur de la marge intérieure pour agrandir la boîte */
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   text-align: center;
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.category-button {
+  margin: 10px;
+  background-color: #ffcc00; /* Jaune */
+  color: #000; /* Noir */
+  padding: 20px 40px; /* Ajustez les valeurs de la marge intérieure pour agrandir les boutons */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 18px; /* Ajustez la taille de la police pour agrandir le texte */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.category-button:hover {
+  background-color: #e5b800; /* Jaune foncé au survol */
+}
+
+.change-account-box {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #28a745; /* Couleur verte */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.change-account-button {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
 }

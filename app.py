@@ -218,7 +218,7 @@ def home():
     cat3 = session.get('cat3')
     priv = session.get('privilege')
 
-    return render_template("home.html", name_user=username, pref1=cat1, pref2=cat2, pref3=cat3, right=priv)
+    return render_template("home.html", name_user=username)
 
 @app.route("/home/musique")
 def musique():
@@ -232,6 +232,18 @@ def jv():
 @app.route("/home/sport")
 def sport():
     return render_template("categorie_sport.html")
+
+@app.route("/home/cuisine")
+def cuisine():
+    return render_template("categorie_cuisine.html")
+
+@app.route("/home/documentaire")
+def documentaire():
+    return render_template("categorie_documentaire.html")
+
+@app.route("/home/automobile")
+def automobile():
+    return render_template("categorie_automobile.html")
 
 @app.route("/home/lecteur.html")
 def lecteur():

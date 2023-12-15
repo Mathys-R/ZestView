@@ -26,3 +26,22 @@ iframe {
   width: 100%; /* Ajustez la largeur du lecteur selon vos besoins */
   aspect-ratio: 1; /* Carré, maintient les dimensions égales */
 }
+
+.back-button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-button a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #28a745; /* Couleur verte */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button a:hover {
+  background-color: #218838; /* Couleur verte légèrement plus sombre au survol */
+}

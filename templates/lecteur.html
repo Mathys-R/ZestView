@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lecteur</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style_lecteur.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style_lecteur.css') }}"
+    />
   </head>
 
   <body>
@@ -14,38 +17,40 @@
     </div>
 
     <div class="main">
-        <!-- Utilise une div avec un ID spécifique pour incorporer le lecteur YouTube -->
-        <div id="youtube-player"></div>
+      <!-- Utilise une div avec un ID spécifique pour incorporer le lecteur YouTube -->
+      <div id="youtube-player"></div>
+      <br />
+      <div class="back-button">
+        <a href="javascript:history.back()">Retour</a>
+      </div>
     </div>
 
     <script>
       // Fonction pour récupérer les paramètres d'URL
       function getParameterByName(name, url) {
-          // Si aucune url est transmise, on prend celle de la fenêtre.
-          if (!url) url = window.location.href;
-          // permet de retire les '[' et ']' du nom s'il en a.
-          name = name.replace(/[[]]/g, '\$&');
-          // Permet de récupére le paramètre name en recherchant les caractères spécifiques.
-          var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            //On retire l'URL pour ne garder que la partie souhaité de l'URL complète.
-              results = regex.exec(url);
-          if (!results) return null;
-          if (!results[2]) return '';
-          // renvoie la paramètre récupéré de l'URL décodée et nettoyer de '+'
-          return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        if (!url) url = window.location.href;
+        name = name.replace(/[[]]/g, "\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return "";
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
       }
 
       // Récupère le videoId de l'URL
-      var videoId = getParameterByName('videoId');
+      var videoId = getParameterByName("videoId");
 
       // Utilise le videoId pour incorporer le lecteur YouTube
-      var playerDiv = document.getElementById('youtube-player');
+      var playerDiv = document.getElementById("youtube-player");
       if (videoId) {
-          // Remplace l'iframe pour utiliser la version embarquée de la vidéo
-          playerDiv.innerHTML = '<iframe width="560" height="560" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        // Remplace l'iframe pour utiliser la version embarquée de la vidéo
+        playerDiv.innerHTML =
+          '<iframe width="560" height="560" src="https://www.youtube.com/embed/' +
+          videoId +
+          '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
       } else {
-          playerDiv.innerHTML = '<p>Aucune vidéo spécifiée</p>';
+        playerDiv.innerHTML = "<p>Aucune vidéo spécifiée</p>";
       }
-  </script>
+    </script>
   </body>
 </html>
