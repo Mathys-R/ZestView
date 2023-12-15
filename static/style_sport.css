@@ -5,40 +5,13 @@ body {
 }
 
 .header {
-  background-color: #fff; /* Fond blanc, retire la bande verte */
+  background-color: #28a745; /* Couleur de la bande verte */
   padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
+  text-align: left;
 }
 
 .logo {
   width: 100px; /* Ajustez la taille selon vos besoins */
-  margin-right: 20px; /* Marge entre le logo et le bouton de retour à l'accueil */
-}
-
-.go-back {
-  color: white; /* Assurez-vous que le texte est blanc */
-  position: absolute;
-  top: 20px; /* Ajustez la valeur selon vos besoins pour le positionnement vertical */
-  right: 20px; /* Place le bloc à l'extrême droite */
-}
-
-.go-back .back-link {
-  text-decoration: none;
-  color: white;
-  background-color: #28a745; /* Couleur de fond verte pour le bouton de retour à l'accueil */
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.go-back .back-link:hover {
-  background-color: #218838; /* Couleur de fond verte foncée au survol */
 }
 
 .category-name {

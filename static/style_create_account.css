@@ -20,21 +20,21 @@ video {
 }
 
 .go-back {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
 .go-back .back-link {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    display: inline-block;
-    transition: color 0.5s ease;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  transition: color 0.5s ease;
 }
 
 .go-back .back-link:hover {
-    color: lightgray;
+  color: lightgray;
 }
 
 .create-account-box {
@@ -101,6 +101,11 @@ video {
   margin-top: 20px;
   letter-spacing: 4px;
   border: 2px solid white;
+}
+
+.create-account-box .error-message {
+  color: red;
+  margin-top: 10px;
 }
 
 .create-account-box form .submit input:hover {

@@ -8,6 +8,11 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style_login.css') }}"
     />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='ZestViewLOGO.png') }}"
+      type="image/png"
+    />
   </head>
   <body>
     <video
@@ -18,56 +23,34 @@
     ></video>
 
     <div class="go-back">
-        <a href="{{url_for('bienvenue')}}" class="back-link">&#8592; Retour à l'accueil</a>
+      <a href="{{url_for('bienvenue')}}" class="back-link"
+        >&#8592; Retour à l'accueil</a
+      >
     </div>
 
     <div class="login-box">
-      <form action="{{url_for('traitement')}}" method="post">
+      <form action="/login" method="post">
         <!--action : definie la route de l'URL sur laquel les données du formulaire vont être transmis
             methode : méthode d'envoie des données au serv (GET, POST)-->
 
-            <div class="user-box">
-                <label for="user">Nom d'utilisateur :</label>
-                <input type="text" name="username" id="user" required>
-            </div>
-            <div class="user-box">
-                <label for="pw">Mot de Passe :</label> 
-                <input type="password" name="password" id="pw" required>
-            </div>
-            <div class="error-message" id="error-message">
-                <!-- Boîte de message d'erreur -->
-            </div>
-            <div class="error-message" id="error-message">
-                <!-- Boîte de message d'erreur -->
-            </div>
-            <div class="submit">
-                <input type="submit" value="Connexion">
-            </div>
-        </form>
-
+        <div class="user-box">
+          <label for="user">Nom d'utilisateur :</label>
+          <input type="text" name="username" id="username" required />
+        </div>
+        <div class="user-box">
+          <label for="pw">Mot de Passe :</label>
+          <input type="password" name="password" id="password" required />
+        </div>
+        <div class="error-message" id="error-message">
+          {% if result %}
+          <br />
+          <p>{{ result }}</p>
+          {% endif %}
+        </div>
+        <div class="submit">
+          <input type="submit" value="Connexion" name="action" />
+        </div>
+      </form>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var form = document.querySelector('form');
-            var errorMessage = document.getElementById('error-message');
-
-            form.addEventListener('submit', function (event) {
-                // Vous devrez remplacer cette condition par la logique réelle de vérification des identifiants
-                var credentialsAreIncorrect = true;
-
-                if (credentialsAreIncorrect) {
-                    // Afficher le message d'erreur
-                    errorMessage.innerText = 'Identifiants incorrects. Veuillez réessayer.';
-                    errorMessage.style.display = 'block';
-
-                    // Empêcher l'envoi du formulaire
-                    event.preventDefault();
-                } else {
-                    // Si les identifiants sont corrects, vous pouvez laisser le formulaire être soumis
-                }
-            });
-        });
-    </script>
-</body>
+  </body>
 </html>

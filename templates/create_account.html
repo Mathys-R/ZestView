@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,6 +7,11 @@
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style_create_account.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='ZestViewLOGO.png') }}"
+      type="image/png"
     />
   </head>
   <body>
@@ -18,14 +23,16 @@
     ></video>
 
     <div class="go-back">
-        <a href="{{url_for('bienvenue')}}" class="back-link">&#8592; Retour à l'accueil</a>
+      <a href="{{url_for('bienvenue')}}" class="back-link"
+        >&#8592; Retour à l'accueil</a
+      >
     </div>
 
     <div class="create-account-box">
       <form action="{{url_for('create_account')}}" method="post">
         <div class="user-box">
-          <label for="email">Adresse E-mail :</label>
-          <input type="email" name="email" id="email" required />
+          <label for="username">Nom d'utilisateur :</label>
+          <input type="text" name="username" id="username" required />
         </div>
         <div class="user-box">
           <label for="password">Mot de Passe :</label>
@@ -39,6 +46,12 @@
             id="confirm-password"
             required
           />
+        </div>
+        <div class="error-message" id="error-message">
+          <!-- Boîte de message d'erreur -->
+          {% if error_message %}
+          <div class="error-message">{{ error_message }}</div>
+          {% endif %}
         </div>
         <div class="submit">
           <input type="submit" value="Créer un compte" />
